@@ -12,7 +12,7 @@ def calculate_distance(rA, rB):
     return distance
 
 def calculate_distance_list(rA, rB):
-    """Calculate the distance between points A and B. Assums rA and rB are lists."""
+    """Calculate the distance between points A and B. Assumes rA and rB are lists."""
     squared_sum = 0
     for dim in range(len(rA)):
         squared_sum += (rA[dim] - rB[dim])**2
@@ -22,6 +22,22 @@ def calculate_distance_list(rA, rB):
 
 
 def build_bond_list(coordinates, max_bond=2.93, min_bond=0):
+    """Builds list of bonds from atomic cooordinates based on distance.
+
+    Parameters
+    ----------
+    coordinates : np.array
+        An array of atomic coordinates. Size should be (n, 3) where n is the number of particles.
+    max_bond : float, optional
+        The maximum distance between atoms to be considered a bond. Default is 2.93 bohr.
+    min_bond : float, optional
+        The minimum distance between atoms to be considered a bond.
+
+    Returns
+    -------
+    bonds : dict
+        A dictionary of bonds with atom pair tuples as keys, and bond lengths as values
+    """
     num_atoms = len(coordinates)
 
     bonds = {}
